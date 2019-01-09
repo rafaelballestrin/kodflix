@@ -8,8 +8,7 @@
 
 .item {
   flex: 1;
-  padding: 30px;
-  border: 1px solid green;
+  padding: 0px;
   position: relative;
   overflow: hidden;
   
@@ -19,10 +18,11 @@
   transition: bottom ease 1s;
   position: absolute;
   bottom: -100px;
-  background-color: green;
+  background-color: black;
+  color: white;
   left: 0;
   width: 100%;
-  opacity: .6;
+  opacity: .8;
   
 }
 
