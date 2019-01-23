@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 import coverBlackMirror from './images/coverBlackMirror.jpg'
 import coverBreakingBad from './images/coverBreakingBad.jpg'
@@ -9,11 +9,11 @@ import coverTheWire from './images/coverTheWire.jpg'
 
 export default function getGallery() {
     return [
-      { id: 'BlackMirror', name: 'Black Mirror', logo: coverBlackMirror },
-      { id: 'BreakingBad', name: 'Breaking Bad', logo: coverBreakingBad },
-      { id: 'DeathNote', name: 'Death Note', logo: coverDeathNote },
-      { id: 'GameOfThrones', name: 'Game of Thrones', logo: coverGameOfThrones },
-      { id: 'TheWalkingDead', name: 'The Walking Dead', logo: coverTheWalkingDead },
-      { id: 'TheWire', name: 'The Wire', logo: coverTheWire },
+      { id: 'blackMirror', name: 'Black Mirror', logo: coverBlackMirror },
+      { id: 'breakingBad', name: 'Breaking Bad', logo: coverBreakingBad },
+      { id: 'deathNote', name: 'Death Note', logo: coverDeathNote },
+      { id: 'gameOfThrones', name: 'Game of Thrones', logo: coverGameOfThrones },
+      { id: 'theWalkingDead', name: 'The Walking Dead', logo: coverTheWalkingDead },
+      { id: 'theWire', name: 'The Wire', logo: coverTheWire },
     ];
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'; 
-import Details from './Details.js';
-import Gallery from './Gallery.js';
+import Details from './Details';
+import Gallery from './Gallery';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
       <Router>
       <div className="App">
         <Route exact path='/' component={Gallery} />
-        <Route exact path='/:details' component={Details} />
+        <Route exact path='/:galleryId' component={Details}  />
       </div>
       </Router>
     );
