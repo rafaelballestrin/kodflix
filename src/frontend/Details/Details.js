@@ -18,6 +18,14 @@ export default class Details extends Component {
     let gallery = getGallery()
       .find((gallery) => gallery.id === galleryId);
     this.setState({ gallery });
+
+    fetch('/rest/shows')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(JSON.stringify(myJson));
+      });
   }
 
   render() {
@@ -26,17 +34,17 @@ export default class Details extends Component {
     } else {
       return (
         <div className='Details'>
-         <h1>{this.state.gallery.name}</h1>
-         <div className ='container'>
-           <div className='synopsis'>{this.state.gallery.synopsis}</div>
-           <img
-             src={this.state.gallery.logo}
-             alt={this.state.gallery.name} />
-         </div>
-         <Link to='/'>Back to home page</Link>
-       </div >
-          );
-        }
-      }
-    
+          <h1>{this.state.gallery.name}</h1>
+          <div className='container'>
+            <div className='synopsis'>{this.state.gallery.synopsis}</div>
+            <img
+              src={this.state.gallery.logo}
+              alt={this.state.gallery.name} />
+          </div>
+          <Link to='/'>Back to home page</Link>
+        </div >
+      );
+    }
+  }
+
 }
