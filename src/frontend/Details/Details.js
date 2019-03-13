@@ -1,49 +1,56 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-//import getGallery from '../Gallery-get';
-import './Details.css'
+// import getGallery from './Gallery-get';
+import './Details.css';
 
 export default class Details extends Component {
-
   constructor() {
     super();
     this.state = {
-      gallery: []
+      gallery: {}
     };
   }
 
   componentDidMount() {
-    // let galleryId = this.props.match.params.galleryId;
-    // let gallery = getGallery()
-    //   .find((gallery) => gallery.id === galleryId);
-    // this.setState({ gallery });
-
-    fetch('/rest/shows')
+    fetch('/rest/movies')
       .then(response => {
         return response.json();
       })
-      .then(movies => {
-        return movies.find(gallery => gallery.id);
+      .then(galleries => {
+        let galleryId = this.props.match.params.galleryId;
+        let gallery = galleries.find(function(gallery) {
+          return gallery.id === galleryId;
+        });
+        this.setState({
+          gallery: gallery
+        });
       });
   }
-
   render() {
+    let gallery = this.state.gallery;
     if (this.state.gallery === undefined) {
-      return <Redirect to='/not-found' />
-    } else {
+      return <Redirect to='/not-found' />;
+    } else if (this.state.gallery.id) {
       return (
         <div className='Details'>
-          <h1>{this.state.gallery.name}</h1>
+          <h1 className='DetailsName'>{gallery.name}</h1>
           <div className='container'>
-            <div className='synopsis'>{this.state.gallery.synopsis}</div>
+            <div className = 'synopsis'>{this.state.gallery.synopsis}</div>
             <img
-              src={this.state.gallery.logo}
-              alt={this.state.gallery.name} />
+              src={require(`../images/${gallery.id}.jpg`)}
+              alt='gallery pictures'
+            />
           </div>
           <Link to='/'>Back to home page</Link>
-        </div >
+        </div>
+      );
+    } else {
+      return (
+        <div className='details'>
+          <div className='content'>While loading page...</div>
+          <div class='loader'></div>
+        </div>
       );
     }
   }
-
 }
