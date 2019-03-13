@@ -1,7 +1,6 @@
-
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import getGallery from '../Gallery-get';
+//import getGallery from '../Gallery-get';
 import './Details.css'
 
 export default class Details extends Component {
@@ -9,22 +8,22 @@ export default class Details extends Component {
   constructor() {
     super();
     this.state = {
-      gallery: {}
+      gallery: []
     };
   }
 
   componentDidMount() {
-    let galleryId = this.props.match.params.galleryId;
-    let gallery = getGallery()
-      .find((gallery) => gallery.id === galleryId);
-    this.setState({ gallery });
+    // let galleryId = this.props.match.params.galleryId;
+    // let gallery = getGallery()
+    //   .find((gallery) => gallery.id === galleryId);
+    // this.setState({ gallery });
 
     fetch('/rest/shows')
-      .then(function (response) {
+      .then(response => {
         return response.json();
       })
-      .then(function (myJson) {
-        console.log(JSON.stringify(myJson));
+      .then(movies => {
+        return movies.find(gallery => gallery.id);
       });
   }
 
